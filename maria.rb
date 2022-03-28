@@ -7,7 +7,7 @@ a = 0.5
 drumaria = "C:/Users/dallas_estell/Downloads/Dear Maria Drum T2.wav"
 drumaria2 = "C:/Users/dallas_estell/Downloads/Dear Maria Drum TrackT3.wav"
 vocalmaria = "C:/Users/dallas_estell/Downloads/Dear Maria Count Me In Intro.wav"
-vocal2maria = "C:/Users/dallas_estell/Downloads/Second Verse.wav"
+vocal2maria = "C:/Users/dallas_estell/Downloads/mariafadeout.wav"
 guitarmaria = "C:/Users/dallas_estell/Downloads/Dear Maria Count Me In (Guitar).wav"
 define :bassmaria do |b,m|
   sample b, amp: 2
@@ -30,11 +30,10 @@ live_loop :first do
   end
   stop
 end
-
 sleep 32
-
+sample guitarmaria
 live_loop :second do
-  3.times do
+  32.times do
     sample :bd_zome , sustain: 2
     sleep 0.5
     sample :drum_bass_soft, sustain: 2
@@ -42,18 +41,16 @@ live_loop :second do
   end
   stop
 end
-
 sleep 32
-
+sample guitarmaria
 live_loop :third do
-  3.times do
+  32.times do
     bassmaria :bd_tek, :sn_generic
     sample :drum_splash_soft
   end
   stop
 end
-
 sleep 32
-with_fx :echo do
+with_fx :eq do
   sample vocal2maria
 end
